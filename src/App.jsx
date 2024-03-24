@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState ,useEffect } from "react";
 import AddTodo from "./components/AddTodo";
+import TodoItem from "./components/TodoItem";
 import "./App.css";
-import { useEffect } from "react";
 
 const App = () => {
   const [todos, setTodos] = useState([]);
@@ -26,6 +26,7 @@ const App = () => {
   return <div className="container">
     <h1>Todo List</h1>
     <AddTodo handleAddTodo={addTodo}/>
+    <TodoItem todos={todos}/>
   </div>;
 };
 

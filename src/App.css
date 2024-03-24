@@ -5,3 +5,34 @@
     align-items: center;
     justify-content: center;
 }
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    margin: 10px 0;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 5px 10px #bbbbbb;
+
+}
+
+.edit {
+    background-color: #33e9e0;
+    border: solid 1px #059b93;
+    border-radius: 3px;
+    margin: 0px 5px;
+
+
+}
+
+.del {
+    background-color: #da380f;
+    border: solid 1px #8b1a03;
+    border-radius: 3px;
+    margin: 0px 5px;
+    color: rgb(0, 0, 0);
+
+
+}
