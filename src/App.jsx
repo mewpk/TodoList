@@ -9,6 +9,10 @@ let id = 1;
 
 const App = () => {
   const [todos, setTodos] = useState([]);
+  const [display, setDisplay] = useState(true);
+  const [edit, setEdit] = useState({});
+
+  
   
   useEffect(() => {
     console.log(todos);
@@ -38,15 +42,28 @@ const App = () => {
 
 
     setTodos(newTodos);
-
   };
+  const editTodo = (id) =>{
+    const edit = todos.find((todo) => todo.id === id);
+    setEdit(edit);
+    setDisplay(!display);
+  }
+  const handleEditTodo =  (input, id) => {
+
+    setTodos((prev)=> prev.map((todo) => todo.id === id ? {name : input , id : id} : todo));
+    setDisplay(!display);
+    setEdit(null);
+  }
 
 
 
   return <div className="container">
     <h1>Todo List</h1>
-    <AddTodo handleAddTodo={addTodo}/>
-    <TodoItem todos={todos} deleteTodo={deleteTodo}/>
+    <AddTodo handleEditTodo={handleEditTodo} handleAddTodo={addTodo} edit={edit} display={display}/>
+    {
+      display &&
+      <TodoItem todos={todos} deleteTodo={deleteTodo} editTodo={editTodo}/>
+    }
   </div>;
 };
 

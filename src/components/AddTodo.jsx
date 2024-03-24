@@ -1,21 +1,24 @@
-import React, { useState  , useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
-const AddTodo = ({handleAddTodo}) => {
+const AddTodo = ({ handleAddTodo,handleEditTodo, display, edit }) => {
   const [input, setInput] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if(!input){
-        return;
+    if (!input) {
+      return;
     }
 
-    handleAddTodo(input );
+    handleAddTodo(input);
     setInput("");
+  };
 
-    
-  }
-
+  useEffect(() => {
+    if (edit) {
+      setInput(edit.name);
+    }
+  }, [edit]);
 
   return (
     <div>
@@ -26,10 +29,21 @@ const AddTodo = ({handleAddTodo}) => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
-      <button onClick={handleSubmit}>
-        Add
+      <button
+        onClick={(e) => {
+          if (display) {
+            handleSubmit(e);
+            return;
+          }
+          if (edit) {
+            handleEditTodo(input, edit.id);
+            setInput("");
+            return;
+          }
+        }}
+      >
+        {display ? "Add" : "Edit"}
       </button>
-
     </div>
   );
 };
