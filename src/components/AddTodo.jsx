@@ -1,11 +1,22 @@
 import React, { useState  , useEffect } from "react";
 
-const AddTodo = () => {
+const AddTodo = ({handleAddTodo}) => {
   const [input, setInput] = useState("");
 
-  useEffect(() => {
-    console.log(input);
-  }, [input]);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    if(!input){
+        return;
+    }
+
+    handleAddTodo(input );
+    setInput("");
+
+
+
+
+  }
 
 
   return (
@@ -17,6 +28,10 @@ const AddTodo = () => {
         value={input}
         onChange={(e) => setInput(e.target.value)}
       />
+      <button onClick={handleSubmit}>
+        Add
+      </button>
+
     </div>
   );
 };
