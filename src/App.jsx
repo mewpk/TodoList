@@ -3,9 +3,13 @@ import AddTodo from "./components/AddTodo";
 import TodoItem from "./components/TodoItem";
 import "./App.css";
 
+
+let id = 1;
+
+
 const App = () => {
   const [todos, setTodos] = useState([]);
-
+  
   useEffect(() => {
     console.log(todos);
   }, [todos]);
@@ -18,9 +22,11 @@ const App = () => {
     }
     const data = {
       name : todo,
-      id : todos.length + 1
+      id : id
 
     }
+
+    id += 1;
 
     const newTodos = [...todos, data];
 
@@ -28,7 +34,10 @@ const App = () => {
   };
 
   const deleteTodo = (id) => {
-    console.log(id);
+    const newTodos = todos.filter((todo) => todo.id !== id);
+
+
+    setTodos(newTodos);
 
   };
 
