@@ -13,9 +13,7 @@ const AddTodo = ({handleAddTodo}) => {
     handleAddTodo(input );
     setInput("");
 
-
-
-
+    
   }
 
 

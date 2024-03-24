@@ -16,9 +16,20 @@ const App = () => {
 
       return;
     }
-    const newTodos = [...todos, todo];
+    const data = {
+      name : todo,
+      id : todos.length + 1
+
+    }
+
+    const newTodos = [...todos, data];
 
     setTodos(newTodos);
+  };
+
+  const deleteTodo = (id) => {
+    console.log(id);
+
   };
 
 
@@ -26,7 +37,7 @@ const App = () => {
   return <div className="container">
     <h1>Todo List</h1>
     <AddTodo handleAddTodo={addTodo}/>
-    <TodoItem todos={todos}/>
+    <TodoItem todos={todos} deleteTodo={deleteTodo}/>
   </div>;
 };
 
